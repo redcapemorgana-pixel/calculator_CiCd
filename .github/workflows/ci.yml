@@ -1,7 +1,6 @@
 # TODO: build your CI pipeline here (tests on multiple Python versions + Trivy scan).
 # See the exercise instructions.
 
-
 name: CI
 
 on:
@@ -54,6 +53,7 @@ jobs:
       - name: Scanner le code avec Trivy
         uses: aquasecurity/trivy-action@v0.33.1
         with:
+          version: v0.76.2
           scan-type: fs
           scan-ref: .
           format: sarif
@@ -63,4 +63,3 @@ jobs:
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: trivy-results.sarif
-
